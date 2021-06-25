@@ -30,6 +30,17 @@ router.post("/", validateRequest(createuserValidation), async (req, res) => {
 
 // Read an user
 
+// Find all users
+router.get("/", async (req, res) => {
+  try {
+    const users = await prisma.user.findMany();
+    return res.json({ users });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ err: "Something went wrong" });
+  }
+});
+
 // Update an user
 
 // Delete an user
