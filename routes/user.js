@@ -1,10 +1,12 @@
 const router = require("express").Router();
+const validateRequest = require("../middlewares/validateReq");
+const createuserValidation = require("../validators/createUser");
 
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Create an user
-app.post("/", async (req, res) => {
+router.post("/", validateRequest(createuserValidation), async (req, res) => {
   const { name, email, role } = req.body;
 
   try {
