@@ -86,3 +86,14 @@ enum UserRole {
   - `@relation` - defines relations between tables.
     - Works like foreign key defination
     - `fields` denotes the column in the current table (field in current model) which is linke to `references` of another table
+  - `@` means field attribute and `@@` means block attribute
+  - `@@map` lets us rename the tabel name. The model name isn't changed. Similarly `@map` lets us rename a field name
+
+### Migrations
+
+- Once we're done creating models in our _./prisma/scham.prisma_ file, we can go on to create our migration
+- To create and apply migrations run:
+
+```bash
+prisma migrate dev --name init
+```
