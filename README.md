@@ -89,6 +89,15 @@ enum UserRole {
   - `@` means field attribute and `@@` means block attribute
   - `@@map` lets us rename the tabel name. The model name isn't changed. Similarly `@map` lets us rename a field name
 
+### Prisma Client
+
+- Every time we update the schema/models, we need to re-generate the Prisma client
+- Run to generate client:
+
+```bash
+npx prisma generate
+```
+
 ### Migrations
 
 - Once we're done creating models in our _./prisma/scham.prisma_ file, we can go on to create our migration

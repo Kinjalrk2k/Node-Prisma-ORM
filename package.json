@@ -6,6 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
+    "prisma": "npx prisma studio",
+    "generate": "npx prisma generate",
     "migrate": "npx prisma migrate dev",
     "migrate:reset": "npx prisma migrate reset"
   },
@@ -15,6 +17,7 @@
     "prisma": "^2.25.0"
   },
   "dependencies": {
-    "@prisma/client": "^2.25.0"
+    "@prisma/client": "^2.25.0",
+    "express": "^4.17.1"
   }
 }
