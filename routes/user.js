@@ -1,12 +1,12 @@
 const router = require("express").Router();
-const validateRequest = require("../middlewares/validateReq");
+const validateReq = require("../middlewares/validateReq");
 const createuserValidation = require("../validators/createUser");
 
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Create an user
-router.post("/", validateRequest(createuserValidation), async (req, res) => {
+router.post("/", validateReq(createuserValidation), async (req, res) => {
   const { name, email, role } = req.body;
 
   try {
@@ -42,9 +42,30 @@ router.get("/", async (req, res) => {
 });
 
 // Update an user
+router.put("/:uuid", validateReq(createuserValidation), async (req, res) => {
+  const { name, email, role } = req.body;
+  const { uuid } = req.params;
+
+  try {
+    let user = await prisma.user.findUnique({ where: { uuid } });
+    if (!user) {
+      throw { message: "User not found" };
+    }
+
+    user = await prisma.user.update({
+      where: { uuid },
+      data: { name, email, role },
+    });
+
+    return res.json(user);
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(404)
+      .json({ msg: error.message.replace(/(\r\n|\n|\r)/gm, "") });
+  }
+});
 
 // Delete an user
-
-// Find users
 
 module.exports = router;
