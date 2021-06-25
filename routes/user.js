@@ -17,7 +17,9 @@ router.post("/", validateRequest(createuserValidation), async (req, res) => {
     return res.json(user);
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ err: "Something went wrong" });
+    return res
+      .status(500)
+      .json({ msg: error.message.replace(/(\r\n|\n|\r)/gm, "") });
   }
 });
 
