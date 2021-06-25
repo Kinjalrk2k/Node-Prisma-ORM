@@ -10,6 +10,11 @@ router.post("/", validateRequest(createuserValidation), async (req, res) => {
   const { name, email, role } = req.body;
 
   try {
+    const exsistingUser = await prisma.user.findUnique({ where: { email } });
+    if (exsistingUser) {
+      throw { message: "Email already exsists" };
+    }
+
     const user = await prisma.user.create({
       data: { name, email, role },
     });
@@ -18,7 +23,7 @@ router.post("/", validateRequest(createuserValidation), async (req, res) => {
   } catch (error) {
     console.log(error);
     return res
-      .status(500)
+      .status(400)
       .json({ msg: error.message.replace(/(\r\n|\n|\r)/gm, "") });
   }
 });
