@@ -1,12 +1,12 @@
 const router = require("express").Router();
 const validateReq = require("../middlewares/validateReq");
-const createuserValidation = require("../validators/createUser");
+const createUserValidation = require("../validators/createUser");
 
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Create an user
-router.post("/", validateReq(createuserValidation), async (req, res) => {
+router.post("/", validateReq(createUserValidation), async (req, res) => {
   const { name, email, role } = req.body;
 
   try {
@@ -57,7 +57,7 @@ router.get("/", async (req, res) => {
 });
 
 // Update an user
-router.put("/:uuid", validateReq(createuserValidation), async (req, res) => {
+router.put("/:uuid", validateReq(createUserValidation), async (req, res) => {
   const { name, email, role } = req.body;
   const { uuid } = req.params;
 
