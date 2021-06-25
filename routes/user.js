@@ -29,6 +29,21 @@ router.post("/", validateReq(createuserValidation), async (req, res) => {
 });
 
 // Read an user
+router.get("/:uuid", async (req, res) => {
+  const { uuid } = req.params;
+  try {
+    const user = await prisma.user.findUnique({ where: { uuid } });
+
+    if (!user) {
+      throw { message: "User not found" };
+    }
+
+    return res.json(user);
+  } catch (error) {
+    console.log(error);
+    return res.status(404).json({ err: error.message });
+  }
+});
 
 // Find all users
 router.get("/", async (req, res) => {
@@ -67,5 +82,16 @@ router.put("/:uuid", validateReq(createuserValidation), async (req, res) => {
 });
 
 // Delete an user
+router.delete("/:uuid", async (req, res) => {
+  const { uuid } = req.params;
+
+  try {
+    await prisma.user.delete({ where: { uuid } });
+    return res.json({ success: true, message: "User Deleted!" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ err: "Something went wrong" });
+  }
+});
 
 module.exports = router;
