@@ -32,7 +32,10 @@ router.post("/", validateReq(createUserValidation), async (req, res) => {
 router.get("/:uuid", async (req, res) => {
   const { uuid } = req.params;
   try {
-    const user = await prisma.user.findUnique({ where: { uuid } });
+    const user = await prisma.user.findUnique({
+      where: { uuid },
+      include: { posts: true },
+    });
 
     if (!user) {
       throw { message: "User not found" };
