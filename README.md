@@ -1,7 +1,7 @@
 # Node Prisma ORM
 
 - Learning Prisma ORM with PostgreSQL in NodeJS backend
-- Tutorial by: Ahmed Hadjou (classes)
+- Tutorial by: Ahmed Hadjou (Classsed)
   - [Prisma Tutorial - Next Gen ORM (with JS & TS)](https://www.youtube.com/watch?v=Ehv69qFvN2I)
 
 ## Bootstrapping
