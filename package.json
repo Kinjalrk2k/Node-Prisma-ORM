@@ -5,8 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "dev": "nodemon --config nodemon.json src/app.ts",
+    "start": "ts-node app.ts",
+    "dev": "nodemon --exec ts-node app.ts",
+    "build": "tsc",
     "prisma": "npx prisma studio",
     "generate": "npx prisma generate",
     "migrate": "npx prisma migrate dev",

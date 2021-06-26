@@ -1,10 +1,12 @@
-const express = require("express");
+import express from "express";
+import usersRoutes from "./routes/users";
+import postsRoutes from "./routes/posts";
 
 const app = express();
 app.use(express.json());
 
-app.use("/users", require("./routes/users"));
-app.use("/posts", require("./routes/posts"));
+app.use("/users", usersRoutes);
+app.use("/posts", postsRoutes);
 
 // Create a post
 

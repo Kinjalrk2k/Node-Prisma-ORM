@@ -1,6 +1,6 @@
-const { body } = require("express-validator");
+import { body, ValidationChain } from "express-validator";
 
-module.exports = [
+const createUser: ValidationChain[] = [
   body("email")
     .isLength({ min: 1 })
     .withMessage("Email must not be empty")
@@ -13,3 +13,5 @@ module.exports = [
     .isIn(["ADMIN", "USER", "SUPERADMIN", undefined])
     .withMessage(`Role must be one of these: "ADMIN", "USER", "SUPERADMIN"`),
 ];
+
+export default createUser;
