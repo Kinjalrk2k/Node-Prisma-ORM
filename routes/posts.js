@@ -21,4 +21,17 @@ router.post("/", validateReq(createPostValidation), async (req, res) => {
   }
 });
 
+router.get("/", async (req, res) => {
+  try {
+    const posts = await prisma.post.findMany();
+
+    return res.json(posts);
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(500)
+      .json({ msg: error.message.replace(/(\r\n|\n|\r)/gm, "") });
+  }
+});
+
 module.exports = router;
