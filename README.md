@@ -1,5 +1,7 @@
 # Node Prisma ORM
 
+> Check out the [`typescript`](https://github.com/Kinjalrk2k/Node-Prisma-ORM/tree/typescript) branch for the TypeScript code
+
 - Learning Prisma ORM with PostgreSQL in NodeJS backend
 - Tutorial by: Ahmed Hadjou (Classsed)
   - [Prisma Tutorial - Next Gen ORM (with JS & TS)](https://www.youtube.com/watch?v=Ehv69qFvN2I)
