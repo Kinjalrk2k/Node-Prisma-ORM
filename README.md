@@ -48,9 +48,11 @@ model User {
   email     String   @unique
   name      String
   role      UserRole @default(USER)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
   posts     Post[]
+
+  @@map("users")
 }
 
 model Post {
@@ -58,10 +60,13 @@ model Post {
   uuid      String   @unique @default(uuid())
   title     String   @db.VarChar(255)
   body      String?
-  user      User     @relation(fields: [userId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
   userId    Int
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("posts")
 }
 
 enum UserRole {
@@ -105,4 +110,60 @@ npx prisma generate
 
 ```bash
 prisma migrate dev --name init
+```
+
+## Sample queries
+
+- Create a new record:
+
+```js
+const newUser = await prisma.user.create({
+  data: { name, email, role },
+});
+```
+
+- Query with `SELECT`, `WHERE`, `ORDER BY` clause
+
+```js
+const user = await prisma.user.findUnique({
+  where: { uuid },
+  include: { posts: true }, // populating!
+});
+```
+
+```js
+const users = await prisma.user.findMany({
+  select: { uuid: true, name: true, role: true }, // select particular fields
+});
+```
+
+```js
+const posts = await prisma.post.findMany({
+  orderBy: { createdAt: "desc" },
+  include: { user: true },
+});
+```
+
+- Update query
+
+```js
+const updatedUser = await prisma.user.update({
+  where: { uuid }, // searching with WHERE
+  data: { name, email, role }, // new data to update with
+});
+```
+
+- Delete query
+
+```js
+await prisma.user.delete({ where: { uuid } });
+```
+
+- Build relations
+
+```js
+const post = await prisma.post.create({
+  data: { title, body, user: { connect: { uuid: userUuid } } },
+  // connecting a post to an user
+});
 ```
