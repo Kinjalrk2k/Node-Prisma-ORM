@@ -23,7 +23,10 @@ router.post("/", validateReq(createPostValidation), async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    const posts = await prisma.post.findMany();
+    const posts = await prisma.post.findMany({
+      orderBy: { createdAt: "desc" },
+      include: { user: true },
+    });
 
     return res.json(posts);
   } catch (error) {
