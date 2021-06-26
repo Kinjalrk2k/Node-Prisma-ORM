@@ -51,7 +51,9 @@ router.get("/:uuid", async (req, res) => {
 // Find all users
 router.get("/", async (req, res) => {
   try {
-    const users = await prisma.user.findMany();
+    const users = await prisma.user.findMany({
+      select: { uuid: true, name: true, role: true },
+    });
     return res.json({ users });
   } catch (error) {
     console.log(error);
