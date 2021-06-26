@@ -1,0 +1,530 @@
+{
+	"info": {
+		"_postman_id": "95b93add-304e-453c-ab4c-952448405816",
+		"name": "Prisma Tutorial",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Add user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"To Del\",\r\n    \"email\": \"td@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/users",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Kinjal Raykarmakar\",\r\n    \"email\": \"kinjalrk2k@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/users",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "205"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"cd-cm5za6O0sUAMrCPAv1X7sHmxo/0\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Jun 2021 10:28:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"uuid\": \"8c0d2eaa-5c39-431d-b82c-4453b3407928\",\n    \"email\": \"kinjalrk2k@gmail.com\",\n    \"name\": \"Kinjal Raykarmakar\",\n    \"role\": \"USER\",\n    \"createdAt\": \"2021-06-25T10:28:28.439Z\",\n    \"updatedAt\": \"2021-06-25T10:28:28.440Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/users",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "252"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fc-BUnXwjt6wWFSRxp7BnCgmuBE9F0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Jun 2021 06:10:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"users\": [\n        {\n            \"uuid\": \"cf8001b3-8ba1-4f45-bdae-0c84a9430b8c\",\n            \"name\": \"Jane Doe\",\n            \"role\": \"ADMIN\"\n        },\n        {\n            \"uuid\": \"8c0d2eaa-5c39-431d-b82c-4453b3407928\",\n            \"name\": \"Kinjuuu\",\n            \"role\": \"ADMIN\"\n        },\n        {\n            \"uuid\": \"3896f6eb-c15f-4f29-bc8b-7bf12ab4c007\",\n            \"name\": \"John Doe\",\n            \"role\": \"USER\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Update an user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"some@gmail.com\",\r\n    \"role\": \"ADMIN\",\r\n    \"name\": \"Kinjuuu\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/:uuid",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								":uuid"
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "8c0d2eaa-5c39-431d-b82c-4453b3407928"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/:uuid",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								":uuid"
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "8c0d2eaa-5c39-431d-b82c-4453b3407928"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/users/:uuid",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"users",
+										":uuid"
+									],
+									"variable": [
+										{
+											"key": "uuid",
+											"value": "8c0d2eaa-5c39-431d-b82c-4453b3407928"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "967"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3c7-dLNRKuKfKBzgQxGZ0PSP29BVTGg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Jun 2021 06:07:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"uuid\": \"8c0d2eaa-5c39-431d-b82c-4453b3407928\",\n    \"email\": \"some@gmail.com\",\n    \"name\": \"Kinjuuu\",\n    \"role\": \"ADMIN\",\n    \"createdAt\": \"2021-06-25T10:28:28.439Z\",\n    \"updatedAt\": \"2021-06-25T17:24:42.308Z\",\n    \"posts\": [\n        {\n            \"id\": 3,\n            \"uuid\": \"b3ae5297-11af-44c2-8b69-1f55b12c852b\",\n            \"title\": \"Post 3\",\n            \"body\": \"Aut et dolorem maxime ea sed odio molestiae. Mollitia libero dolor. Est qui incidunt vel odio omnis. Atque provident nisi aut voluptatem quia. Quia excepturi deserunt sint omnis id. Magnam delectus eum quae numquam odit ipsam doloribus ad saepe.\",\n            \"createdAt\": \"2021-06-26T06:02:53.666Z\",\n            \"updatedAt\": \"2021-06-26T06:02:53.667Z\",\n            \"userId\": 1\n        },\n        {\n            \"id\": 4,\n            \"uuid\": \"133e0ed9-b27a-40d9-9305-6294897477a9\",\n            \"title\": \"Post 3\",\n            \"body\": \"Est est nostrum unde. Occaecati excepturi sequi aspernatur corrupti repudiandae quidem. Facere et reprehenderit pariatur natus inventore quibusdam. Dolores sint ea sed a magnam sed.\",\n            \"createdAt\": \"2021-06-26T06:07:33.212Z\",\n            \"updatedAt\": \"2021-06-26T06:07:33.213Z\",\n            \"userId\": 1\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/:uuid",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								":uuid"
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "ac49b8bd-efb1-425b-960e-a3472fdf3d7d"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/users/:uuid",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"users",
+										":uuid"
+									],
+									"variable": [
+										{
+											"key": "uuid",
+											"value": "ac49b8bd-efb1-425b-960e-a3472fdf3d7d"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "186"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ba-44HjvlE2kO4xXQxD4JZCqJfQPuI\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Jun 2021 17:33:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 10,\n    \"uuid\": \"ac49b8bd-efb1-425b-960e-a3472fdf3d7d\",\n    \"email\": \"td@gmail.com\",\n    \"name\": \"To Del\",\n    \"role\": \"USER\",\n    \"createdAt\": \"2021-06-25T17:29:20.544Z\",\n    \"updatedAt\": \"2021-06-25T17:29:20.545Z\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Create a post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Post 3\",\r\n    \"body\": \"{{$randomLoremParagraph}}\",\r\n    \"userUuid\": \"8c0d2eaa-5c39-431d-b82c-4453b3407928\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/posts",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create a post",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Post 3\",\r\n    \"body\": \"{{$randomLoremParagraph}}\",\r\n    \"userUuid\": \"8c0d2eaa-5c39-431d-b82c-4453b3407928\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/posts",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15f-TIqK4wSklSD1jdA4pajrZvnBjnE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Jun 2021 06:07:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"uuid\": \"133e0ed9-b27a-40d9-9305-6294897477a9\",\n    \"title\": \"Post 3\",\n    \"body\": \"Est est nostrum unde. Occaecati excepturi sequi aspernatur corrupti repudiandae quidem. Facere et reprehenderit pariatur natus inventore quibusdam. Dolores sint ea sed a magnam sed.\",\n    \"createdAt\": \"2021-06-26T06:07:33.212Z\",\n    \"updatedAt\": \"2021-06-26T06:07:33.213Z\",\n    \"userId\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "List all posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/posts",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List all posts",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/posts",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1764"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6e4-V4vy2pniGstSYctpXAsjGWpPuec\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Jun 2021 06:07:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 3,\n        \"uuid\": \"b3ae5297-11af-44c2-8b69-1f55b12c852b\",\n        \"title\": \"Post 3\",\n        \"body\": \"Aut et dolorem maxime ea sed odio molestiae. Mollitia libero dolor. Est qui incidunt vel odio omnis. Atque provident nisi aut voluptatem quia. Quia excepturi deserunt sint omnis id. Magnam delectus eum quae numquam odit ipsam doloribus ad saepe.\",\n        \"createdAt\": \"2021-06-26T06:02:53.666Z\",\n        \"updatedAt\": \"2021-06-26T06:02:53.667Z\",\n        \"userId\": 1,\n        \"user\": {\n            \"id\": 1,\n            \"uuid\": \"8c0d2eaa-5c39-431d-b82c-4453b3407928\",\n            \"email\": \"some@gmail.com\",\n            \"name\": \"Kinjuuu\",\n            \"role\": \"ADMIN\",\n            \"createdAt\": \"2021-06-25T10:28:28.439Z\",\n            \"updatedAt\": \"2021-06-25T17:24:42.308Z\"\n        }\n    },\n    {\n        \"id\": 2,\n        \"uuid\": \"b4ab1f12-5fc2-440f-8242-94771de8e65c\",\n        \"title\": \"Post 2\",\n        \"body\": \"Ipsam eum et nihil exercitationem nostrum. Occaecati esse consequatur fuga nam eligendi possimus. Quia voluptas qui accusamus. Id id omnis et quo modi atque quod et nihil.\",\n        \"createdAt\": \"2021-06-26T06:01:49.375Z\",\n        \"updatedAt\": \"2021-06-26T06:01:49.376Z\",\n        \"userId\": 4,\n        \"user\": {\n            \"id\": 4,\n            \"uuid\": \"cf8001b3-8ba1-4f45-bdae-0c84a9430b8c\",\n            \"email\": \"janedoe@gmail.com\",\n            \"name\": \"Jane Doe\",\n            \"role\": \"ADMIN\",\n            \"createdAt\": \"2021-06-25T12:38:51.594Z\",\n            \"updatedAt\": \"2021-06-25T12:38:51.594Z\"\n        }\n    },\n    {\n        \"id\": 1,\n        \"uuid\": \"fe02ca69-6ecf-43ad-ac32-6e626ce2d646\",\n        \"title\": \"Post 1\",\n        \"body\": \"Non harum sed occaecati numquam ut. Doloremque labore saepe culpa officia doloremque et quod inventore. Nam a ea sapiente pariatur qui. Quia aliquid quis cumque. Eaque sit et neque. Est consequatur ipsum aut qui aut quos rerum quos et.\",\n        \"createdAt\": \"2021-06-26T06:00:25.868Z\",\n        \"updatedAt\": \"2021-06-26T06:00:25.934Z\",\n        \"userId\": 4,\n        \"user\": {\n            \"id\": 4,\n            \"uuid\": \"cf8001b3-8ba1-4f45-bdae-0c84a9430b8c\",\n            \"email\": \"janedoe@gmail.com\",\n            \"name\": \"Jane Doe\",\n            \"role\": \"ADMIN\",\n            \"createdAt\": \"2021-06-25T12:38:51.594Z\",\n            \"updatedAt\": \"2021-06-25T12:38:51.594Z\"\n        }\n    }\n]"
+						}
+					]
+				}
+			]
+		}
+	]
+}
